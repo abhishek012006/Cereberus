@@ -1,0 +1,19 @@
+# Virtual environments
+.venv/
+venv/
+ENV/
+
+# Environment configuration
+.env
+.env.local
+
+# Python cache and byte-compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Pytest and coverage caches
+.pytest_cache/
+.coverage
+htmlcov/
+

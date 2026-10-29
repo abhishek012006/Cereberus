@@ -1,0 +1,5 @@
+streamlit
+httpx==0.28.1
+httpcore==1.0.9
+python-dotenv
+pydantic
