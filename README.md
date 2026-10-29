@@ -89,14 +89,21 @@ streamlit run app.py --server.address 127.0.0.1 --server.port 8501 --server.head
 
 ### Running tests
 
-Run the offline test suite from the project root:
+Run the established offline test suite from the project root:
+
+```powershell
+.\.venv\Scripts\python.exe -m unittest discover -s tests -p "test_*.py" -v
+```
+
+The repository also retains this valid pytest command:
 
 ```powershell
 python -m pytest -q
 ```
 
-The TinyFish connection scripts under `tests/` are manual live checks and are
-not part of the default pytest suite.
+`tests/test_nightwatch_live.py` and `tests/test_tinyfish_connection.py` are
+manual/live checks, not offline tests. They must not run in offline CI and may
+require TinyFish credentials and network access.
 
 ---
 
@@ -113,12 +120,13 @@ From the project root, use the project virtual environment:
 .\.venv\Scripts\Activate.ps1
 python --version
 python -m pip check
-python -m pytest -q
+.\.venv\Scripts\python.exe -m unittest discover -s tests -p "test_*.py" -v
 ```
 
-The test suite is offline. The live TinyFish scripts are not part of the
-default test run and should not be used during a rehearsal unless live testing
-is explicitly authorized.
+The test suite is offline. Do not run `tests/test_nightwatch_live.py` or
+`tests/test_tinyfish_connection.py` during a rehearsal or offline CI run.
+Those scripts are live checks and should only be used when network access and
+the required credentials are explicitly available.
 
 ### Configure the API key safely
 

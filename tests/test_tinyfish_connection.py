@@ -46,9 +46,7 @@ def load_credentials() -> str:
         print("Please add 'TINYFISH_API_KEY=your_key_here' to your .env file.", file=sys.stderr)
         sys.exit(1)
 
-    # API key loaded successfully (never print the key itself)
-    masked_key = api_key[:4] + "..." + api_key[-4:] if len(api_key) > 8 else "***"
-    print(f"[OK] TINYFISH_API_KEY loaded from .env (Key identifier: {masked_key})")
+    print("[OK] TINYFISH_API_KEY is configured.")
     return api_key
 
 
@@ -172,4 +170,3 @@ def run_research_test() -> None:
 
 if __name__ == "__main__":
     run_research_test()
-

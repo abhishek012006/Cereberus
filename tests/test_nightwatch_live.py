@@ -44,9 +44,7 @@ def verify_credentials() -> str:
         print("[ERROR] TINYFISH_API_KEY is not set or empty in .env.", file=sys.stderr)
         sys.exit(1)
 
-    # Security check: Only display a masked indicator, never the key itself
-    masked_indicator = api_key[:4] + "..." + api_key[-4:] if len(api_key) > 8 else "***"
-    print(f"[OK] TinyFish API key loaded securely from .env (ID: {masked_indicator})")
+    print("[OK] TINYFISH_API_KEY is configured.")
     return api_key
 
 
@@ -136,4 +134,3 @@ def run_live_test() -> None:
 
 if __name__ == "__main__":
     run_live_test()
-
